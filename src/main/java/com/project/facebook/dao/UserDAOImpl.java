@@ -2,9 +2,11 @@ package com.project.facebook.dao;
 
 import java.sql.*;
 
+import com.project.facebook.models.Posts;
 import com.project.facebook.models.User;
 import com.project.facebook.util.ConnectionUtil;
-
+import java.util.*;
+import java.util.Date;
 public class UserDAOImpl implements UserDAO {
 
 	public void login(String mail, String pass) {
@@ -17,7 +19,8 @@ public class UserDAOImpl implements UserDAO {
 			prep.setString(2, pass);
 			ResultSet rs = prep.executeQuery();
 			if (rs.next()) {
-				
+				Posts post = new Posts();
+				PostDAO pd = new PostDAOImpl();
 				System.out.println("Hey, " + rs.getString(1) + "! You are, now logged in....");
 				int choice = 0;
 				do {
@@ -26,7 +29,43 @@ public class UserDAOImpl implements UserDAO {
 					System.out.println("1. View Profile \t2. Update Profile \t3 Delete Profile");
 					System.out.println("4. Create Post \t5. View All Posts \t6. See timeline");
 					System.out.println("7. Search Profile by name \t8. See others posts \t9. Logout");
-				} while(choice != 7);
+					
+					Scanner sc = new Scanner(System.in);
+					choice = sc.nextInt();
+					sc.nextLine();
+					switch(choice) {
+					case 1:
+						System.out.println("First Name: " + rs.getString(1));
+						System.out.println("Last Name: " + rs.getString(2));
+						System.out.println("Email: " + rs.getString(3));
+						System.out.println("Mobile Number: " + rs.getString(5));
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 4:
+						System.out.println("Write you post message: ");
+						String msg = sc.nextLine();
+						sc.nextLine();
+						post.setPostMessage(msg);
+						post.setPostTime(new Date());
+						post.setUser_email(mail);
+						pd.createPost(post);
+						break;
+					case 5:
+						break;
+					case 6:
+						break;
+					case 7:
+						break;
+					case 8:
+						break;
+					case 9:
+						return;
+						
+					}
+				} while(choice != 9);
 			}
 			
 			else {

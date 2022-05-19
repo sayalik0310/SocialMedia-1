@@ -9,5 +9,25 @@ public class Posts {
 	
 	private String postMessage;
 	private String user_email;
-	private Date date;
+	private Date postTime;
+	
+	public String getPostMessage() {
+		return postMessage;
+	}
+	public void setPostMessage(String postMessage) {
+		this.postMessage = postMessage;
+	}
+	public String getUser_email() {
+		return user_email;
+	}
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
+	public Date getPostTime() {
+		return postTime;
+	}
+	public void setPostTime(Date postTime) {
+		this.postTime = postTime;
+	}
+	
 }

@@ -1,5 +1,9 @@
 package com.project.facebook.dao;
 
-public interface PostDAO {
+import com.project.facebook.models.Posts;
 
+public interface PostDAO {
+	
+	void createPost(Posts post);
+	void viewPosts();
 }
