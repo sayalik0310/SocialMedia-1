@@ -8,4 +8,14 @@ public interface UserDAO {
 
 	void signup(User user);
 
+	void updateProfile(String mail);
+
+	void deleteProfile(String mail);
+
+	void viewAllPosts(String mail);
+
+	void showTimeline(String mail);
+
+	void searchProfle(String next);
+
 }
