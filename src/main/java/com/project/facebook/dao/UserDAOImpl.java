@@ -66,8 +66,9 @@ public class UserDAOImpl implements UserDAO {
 						ud.showTimeline(mail);
 						break;
 					case 7:
-						System.out.println("Enter the name to search:");
-						ud.searchProfle(sc.next());
+						System.out.println("Enter the email to search:");
+						String smail = sc.next();
+						ud.searchProfle(smail);
 						break;
 					case 8:
 						return;
@@ -267,8 +268,28 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
-	public void searchProfle(String next) {
+	public void searchProfle(String smail) {
 		// TODO Auto-generated method stub
+		try {
+			System.out.println("in search");
+			Connection conn = ConnectionUtil.getConnection();
+			PreparedStatement prep = conn.prepareStatement("select first_name, last_name from user where email=?");
+			prep.setString(1, smail);
+			ResultSet rsName = prep.executeQuery();
+			PreparedStatement prep1 = conn.prepareStatement("select user_post, postTime from post where user_email=?");
+			prep1.setString(1, smail);
+			ResultSet rsPosts = prep1.executeQuery();
+			rsName.next();
+			System.out.println("********************************************************");
+			System.out.println(rsName.getString(1) + " " + rsName.getString(2));
+			System.out.println("--------------------------------------------------------");
+			while (rsPosts.next()) {
+				System.out.println(rsPosts.getString(1));
+				System.out.println("\t\t\t" + rsPosts.getString(2));
+			}
+		} catch (Exception e) {
+			
+		}
 	}
 
 }
