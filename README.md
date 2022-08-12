@@ -34,24 +34,50 @@ To-do list:
 
 ## Getting Started
    
-()
-(include all environment setup steps)
+Use this command to clone this project : `https://github.com/gadekarmd/SocialMedia.git`
 
-> Be sure to include BOTH Windows and Unix command  
-> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
+To run this project, your system must have JDK installed. You can refer [this document](https://www.oracle.com/java/technologies/downloads/#jdk18-windows) for installation of JDK.
 
-- All the `code` required to get started
-- Images of what it should look like
+For creating database, we have used MySQL workbench. [Here](https://dev.mysql.com/downloads/workbench/) you can find the installation guide for installation of same.
+
+I will strongly recommend you to [install eclipse IDE](https://www.eclipse.org/downloads/packages/installer)
+
+
+- First of all, we have to create a database which contains two tables viz. one for storing user information and another for storing posts information.
+- For this just open MySQL workbench and put this command in script `CREATE DATABASE facebook;`.
+- Now, just follow this commands: 
+- - ```
+    USE facebook;
+    
+    CREATE TABLE user (
+    first_name varchar(20) DEFAULT NULL,
+    last_name varchar(20) DEFAULT NULL,
+    email varchar(40) NOT NULL,
+    password varchar(20) DEFAULT NULL,
+    mo_no varchar(15) DEFAULT NULL,
+    PRIMARY KEY (email));
+
+    CREATE TABLE post (
+    post_id int NOT NULL AUTO_INCREMENT,
+    user_post varchar(50) DEFAULT NULL,
+    user_email varchar(40) DEFAULT NULL,
+    postTime varchar(40) DEFAULT NULL,
+    PRIMARY KEY (post_id),
+    FOREIGN KEY (user_email) REFERENCES user (email) ON DELETE CASCADE ON UPDATE CASCADE);
+    ```
+- ![Screenshot (318)](https://user-images.githubusercontent.com/67138334/184426131-4a69a7ef-431e-42e5-a988-e296f162ff3e.png)
 
 ## Usage
 
-> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+> Go to directory, facebook -> src/main/java -> com.project.facebook.util -> ConnectionUtil.java <br>
+> In this java class on line 15, replace username and password by your credentials of database. <br>
+> For ex. username = "root" and password = "123456" <br>
+> Now, just run this project in eclipse.
+> Or, if you want to run this project through command, then paste the below commands in command prompt(in case of Windows os) or terminal(in case of Linux os)
+> `javac App.java`
+> `java App`
+  
+- After running this project, you will see the console like this:
 
-## Contributors
-
-> Here list the people who have contributed to this project. (ignore this section, if its a solo project)
-
-## License
-
-This project uses the following license: [<license_name>](<link>).
+![Screenshot (319)](https://user-images.githubusercontent.com/67138334/184428765-88a903c6-a793-4b69-9601-075e61b04e29.png)
 
