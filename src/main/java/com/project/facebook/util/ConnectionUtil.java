@@ -12,7 +12,7 @@ public class ConnectionUtil {
 		
 		if (conn == null) {
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/facebook", "root", "Dng@4430");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/facebook", "username", "password");
 		}
 		return conn;
 	}
