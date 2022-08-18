@@ -74,6 +74,7 @@ I will strongly recommend you to [install eclipse IDE](https://www.eclipse.org/d
 > For ex. username = "root" and password = "123456" <br>
 > Now, just run this project in eclipse.
 > Or, if you want to run this project through command, then paste the below commands in command prompt(in case of Windows os) or terminal(in case of Linux os)
+
 > `javac App.java`
 > `java App`
   
